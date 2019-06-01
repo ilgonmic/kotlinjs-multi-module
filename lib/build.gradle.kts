@@ -12,3 +12,11 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-js"))
 }
+
+tasks {
+    compileKotlin2Js {
+        kotlinOptions {
+            moduleKind = "commonjs"
+        }
+    }
+}

@@ -17,6 +17,14 @@ dependencies {
     implementation(project(":lib"))
 }
 
+tasks {
+    compileKotlin2Js {
+        kotlinOptions {
+            moduleKind = "commonjs"
+        }
+    }
+}
+
 kotlinFrontend {
     bundle<WebPackExtension>("webpack") {
         (this as WebPackExtension).apply {
