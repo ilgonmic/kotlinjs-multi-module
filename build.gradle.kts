@@ -1,6 +1,5 @@
 plugins {
-    id("kotlin2js") version "1.3.31" apply false
-    kotlin("frontend") version "0.0.45" apply false
+    id("org.jetbrains.kotlin.js") version "1.3.40-eap-67" apply false
 }
 
 group = "com.ilgonmic"

@@ -1,11 +1,12 @@
 plugins {
-    id("kotlin2js")
+    id("org.jetbrains.kotlin.js")
 }
 
 group = "com.ilgonmic"
 version = "1.0-SNAPSHOT"
 
 repositories {
+    maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
     mavenCentral()
 }
 
@@ -13,10 +14,9 @@ dependencies {
     implementation(kotlin("stdlib-js"))
 }
 
-tasks {
-    compileKotlin2Js {
-        kotlinOptions {
-            moduleKind = "commonjs"
-        }
+kotlin {
+    target {
+        browser()
+        nodejs()
     }
 }

@@ -1,14 +1,12 @@
-import org.jetbrains.kotlin.gradle.frontend.webpack.WebPackExtension
-
 plugins {
-    id("kotlin2js")
-    kotlin("frontend")
+    id("org.jetbrains.kotlin.js")
 }
 
 group = "com.ilgonmic"
 version = "1.0-SNAPSHOT"
 
 repositories {
+    maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
     mavenCentral()
 }
 
@@ -17,20 +15,9 @@ dependencies {
     implementation(project(":lib"))
 }
 
-tasks {
-    compileKotlin2Js {
-        kotlinOptions {
-            moduleKind = "commonjs"
-        }
+kotlin {
+    target {
+        browser()
+        nodejs()
     }
 }
-
-kotlinFrontend {
-    bundle<WebPackExtension>("webpack") {
-        (this as WebPackExtension).apply {
-            bundleName = "app"
-            mode = "production"
-        }
-    }
-}
-
