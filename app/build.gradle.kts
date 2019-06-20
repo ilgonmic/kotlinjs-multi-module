@@ -1,12 +1,11 @@
 plugins {
-    id("org.jetbrains.kotlin.js")
+    kotlin("js")
 }
 
 group = "com.ilgonmic"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
     mavenCentral()
 }
 
