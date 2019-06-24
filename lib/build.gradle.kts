@@ -16,6 +16,5 @@ dependencies {
 kotlin {
     target {
         browser()
-        nodejs()
     }
 }
