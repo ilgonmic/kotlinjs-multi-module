@@ -1,5 +1,6 @@
 plugins {
     kotlin("js")
+    id("kotlin-dce-js")
 }
 
 group = "com.ilgonmic"

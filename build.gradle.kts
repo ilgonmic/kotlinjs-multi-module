@@ -1,5 +1,6 @@
 plugins {
     kotlin("js") version "1.3.40" apply false
+    id("kotlin-dce-js") version "1.3.40" apply false
 }
 
 group = "com.ilgonmic"
