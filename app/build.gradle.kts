@@ -26,6 +26,7 @@ kotlin {
 
             runTask {
                 bin = "../webpack-dev-server/bin/webpack-dev-server.js"
+                sourceMaps = false
             }
         }
     }
