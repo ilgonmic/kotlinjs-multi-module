@@ -1,12 +1,12 @@
 plugins {
     kotlin("js")
-    id("kotlin-dce-js")
 }
 
 group = "com.ilgonmic"
 version = "1.0-SNAPSHOT"
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -15,18 +15,19 @@ dependencies {
     implementation(project(":lib"))
 }
 
-// Bin is WA for Windows
 kotlin {
     target {
         browser {
+
+            // This strange case only for test :)
+            dceKeep.add("kotlinjs-multi-module-app.notDelete")
+
             webpackTask {
-                bin = "../webpack/bin/webpack.js"
-                sourceMaps = false
+                dceEnabled = false
             }
 
             runTask {
-                bin = "../webpack-dev-server/bin/webpack-dev-server.js"
-                sourceMaps = false
+                dceEnabled = true
             }
         }
     }

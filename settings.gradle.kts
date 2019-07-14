@@ -1,13 +1,9 @@
 pluginManagement {
-    resolutionStrategy {
-        eachPlugin {
-            when (requested.id.id) {
-                "kotlin-dce-js" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
-            }
-        }
+    repositories {
+        mavenLocal()
+        mavenCentral()
     }
 }
-
 
 rootProject.name = "kotlinjs-multi-module"
 include("lib")
