@@ -20,12 +20,11 @@ kotlin {
     target {
         browser {
             webpackTask {
-                bin = "../webpack/bin/webpack.js"
                 sourceMaps = false
             }
 
             runTask {
-                bin = "../webpack-dev-server/bin/webpack-dev-server.js"
+                sourceMaps = false
             }
         }
     }

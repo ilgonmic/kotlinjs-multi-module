@@ -1,10 +1,8 @@
 pluginManagement {
-    resolutionStrategy {
-        eachPlugin {
-            when (requested.id.id) {
-                "kotlin-dce-js" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
-            }
-        }
+    repositories {
+        maven(url = "https://dl.bintray.com/kotlin/kotlin-eap")
+
+        mavenCentral()
     }
 }
 
