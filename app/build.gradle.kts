@@ -1,12 +1,12 @@
 plugins {
     kotlin("js")
+    id("kotlin-dce-js")
 }
 
 group = "com.ilgonmic"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
@@ -17,18 +17,19 @@ dependencies {
 
 kotlin {
     target {
-        browser {
+        browser {}
+    }
+}
 
-            // This strange case only for test :)
-            dceKeep.add("kotlinjs-multi-module-app.notDelete")
-
-            webpackTask {
-                dceEnabled = false
-            }
-
-            runTask {
-                dceEnabled = true
-            }
+tasks {
+    runDceKotlin {
+        dceOptions {
+            outputDirectory = "${rootProject.buildDir}/js/packages/${rootProject.name}-${project.name}/kotlin-dce"
         }
+
+        getByName("browserWebpack").dependsOn(this)
+
+        // It should be improved, DCE and optimize.js is not necessary to use with run task
+        getByName("browserRun").dependsOn(this)
     }
 }
