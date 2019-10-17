@@ -25,6 +25,7 @@ tasks {
     runDceKotlin {
         dceOptions {
             outputDirectory = "${rootProject.buildDir}/js/packages/${rootProject.name}-${project.name}/kotlin-dce"
+            keep += "kotlinjs-multi-module-app.notDelete"
         }
 
         getByName("browserWebpack").dependsOn(this)
