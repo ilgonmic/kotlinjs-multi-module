@@ -1,5 +1,5 @@
 plugins {
-    kotlin("js") version "1.3.60-eap-23" apply false
+    kotlin("js") version "1.3-SNAPSHOT" apply false
 }
 
 group = "com.ilgonmic"
@@ -7,7 +7,7 @@ version = "1.0-SNAPSHOT"
 
 allprojects {
     repositories {
-        maven(url = "https://dl.bintray.com/kotlin/kotlin-eap")
+        mavenLocal()
         mavenCentral()
     }
 }
