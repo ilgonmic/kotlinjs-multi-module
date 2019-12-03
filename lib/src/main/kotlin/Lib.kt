@@ -1,11 +1,7 @@
 fun answer(): Int {
-    return 42
+    return best()
 }
 
 fun sheldon(): Int {
-    return 73
-}
-
-fun sheldon2(): Int {
-    return 37
+    return simpleBest()
 }

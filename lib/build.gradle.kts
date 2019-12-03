@@ -12,10 +12,15 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-js"))
+    implementation(project(":base"))
+
+    testImplementation(kotlin("test-js"))
 }
 
 kotlin {
     target {
-        browser()
+        browser {
+            useCommonJs()
+        }
     }
 }
