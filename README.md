@@ -1,13 +1,13 @@
 # kotlinjs-multi-module
 
-Since Kotlin 1.3.40 there is npm and webpack support in kotlin-gradle-plugin.
+Since Kotlin 1.3.70 there is npm and webpack support in kotlin-gradle-plugin.
 
-`./gradlew clean build`
+`./gradlew build`
 
 Bundle application:
 
-`./gradlew :app:browserWebpack`
+`./gradlew assemble`
 
 Run application:
 
-`./gradlew :app:run`
+`./gradlew :app:run -t`
