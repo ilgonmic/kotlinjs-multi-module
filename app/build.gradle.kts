@@ -17,6 +17,12 @@ dependencies {
 kotlin {
     target {
         browser {
+            dceTask {
+                keep += "kotlinjs-multi-module-app.foo"
+                dceOptions {
+                    outputDirectory = "$buildDir/js/packages/${project.name}/kotlin-dce-2"
+                }
+            }
         }
     }
 }
