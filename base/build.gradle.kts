@@ -1,5 +1,6 @@
 plugins {
     kotlin("js")
+    id("maven-publish")
 }
 
 group = "com.ilgonmic"
@@ -19,6 +20,15 @@ kotlin {
     target {
         browser {
             useCommonJs()
+//            produceKotlinLibrary()
+        }
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["kotlin"])
         }
     }
 }

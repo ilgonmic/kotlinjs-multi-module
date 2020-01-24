@@ -1,5 +1,6 @@
 plugins {
     kotlin("js")
+    id("maven-publish")
 }
 
 group = "com.ilgonmic"
@@ -21,6 +22,21 @@ kotlin {
     target {
         browser {
             useCommonJs()
+//            produceKotlinLibrary()
+        }
+    }
+}
+
+(project.extensions.getByName("kotlin") as org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension).apply {
+    sourceSets.all {
+        println("SOURCE SET $this")
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["kotlin"])
         }
     }
 }
