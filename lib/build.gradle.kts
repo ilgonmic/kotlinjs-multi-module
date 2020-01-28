@@ -20,16 +20,10 @@ dependencies {
 
 kotlin {
     target {
+        useCommonJs()
+        produceKotlinLibrary()
         browser {
-            useCommonJs()
-//            produceKotlinLibrary()
         }
-    }
-}
-
-(project.extensions.getByName("kotlin") as org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension).apply {
-    sourceSets.all {
-        println("SOURCE SET $this")
     }
 }
 

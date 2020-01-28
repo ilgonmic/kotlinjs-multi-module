@@ -16,8 +16,9 @@ dependencies {
 
 kotlin {
     target {
+        produceExecutable()
+
         browser {
-//            produceJs()
         }
     }
 }
