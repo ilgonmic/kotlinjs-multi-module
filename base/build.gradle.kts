@@ -20,7 +20,7 @@ kotlin {
     target {
         browser {
         }
-        produceKotlinLibrary()
+//        produceKotlinLibrary()
         useCommonJs()
     }
 }

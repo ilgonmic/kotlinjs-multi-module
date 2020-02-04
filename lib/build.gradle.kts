@@ -21,7 +21,7 @@ dependencies {
 kotlin {
     target {
         useCommonJs()
-        produceKotlinLibrary()
+//        produceKotlinLibrary()
         browser {
         }
     }
