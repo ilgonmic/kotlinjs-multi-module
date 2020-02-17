@@ -4,3 +4,5 @@ fun main() {
     println("Sheldon: ${sheldon()}")
     window.onload = { println("Sheldon: ${sheldon()}") }
 }
+
+fun foo() = "FOO"
