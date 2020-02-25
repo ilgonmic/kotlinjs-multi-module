@@ -1,4 +1,5 @@
-//import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackOutput.Target
+import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.IR
+import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.LEGACY
 
 plugins {
     kotlin("js")
@@ -17,22 +18,14 @@ dependencies {
 }
 
 kotlin {
-    target {
+    js(IR) {
         produceExecutable()
+        useCommonJs()
 
         browser {
             dceTask {
                 keep("kotlinjs-multi-module-app.foo")
             }
-
-//            webpackTask {
-//                output.libraryTarget = Target.COMMONJS
-//                output.library = "app-my-2"
-//            }
-        }
-
-        binaries {
-            executable()
         }
     }
 }

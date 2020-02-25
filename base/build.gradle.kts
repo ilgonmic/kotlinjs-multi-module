@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.BOTH
+
 plugins {
     kotlin("js")
     id("maven-publish")
@@ -17,10 +19,9 @@ dependencies {
 }
 
 kotlin {
-    target {
+    js(BOTH) {
         browser {
         }
-//        produceKotlinLibrary()
         useCommonJs()
     }
 }
