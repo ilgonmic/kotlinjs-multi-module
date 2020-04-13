@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.BOTH
-
 plugins {
     kotlin("js")
     id("maven-publish")
@@ -12,17 +10,44 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(kotlin("stdlib-js"))
-
-    testImplementation(kotlin("test-js"))
-}
+//dependencies {
+//    implementation(kotlin("stdlib-js"))
+//    implementation(npm(projectDir.resolve("src/my")))
+//
+//    testImplementation(kotlin("test-js"))
+//}
 
 kotlin {
-    js(BOTH) {
-        browser {
-        }
+    js {
         useCommonJs()
+//        moduleName = "base2"
+        browser {
+//            testTask {
+//                useKarma {
+////                    useIe()
+////                    useOpera()
+//                }
+//            }
+        }
+        nodejs()
+
+    }
+
+    sourceSets {
+        val main by getting {
+            kotlin.srcDir("src/main/kotlin")
+
+            dependencies {
+                implementation(kotlin("stdlib-js"))
+//                implementation(npm(projectDir.resolve("src/my")))
+            }
+        }
+
+        val test by getting {
+            dependencies {
+                implementation(kotlin("test-js"))
+            }
+        }
     }
 }
 

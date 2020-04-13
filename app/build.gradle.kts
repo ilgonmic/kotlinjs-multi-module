@@ -1,5 +1,4 @@
-import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.IR
-import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.LEGACY
+//import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackCssRule
 
 plugins {
     kotlin("js")
@@ -12,15 +11,15 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(kotlin("stdlib-js"))
-    implementation(project(":lib"))
-}
+//dependencies {
+//    implementation(kotlin("stdlib-js"))
+//    implementation(project(":lib"))
+//}
 
 kotlin {
-    js(IR) {
-        produceExecutable()
-        useCommonJs()
+    js {
+
+//        binaries.executable()
 
         browser {
             dceTask {
@@ -28,4 +27,26 @@ kotlin {
             }
         }
     }
+
+    sourceSets {
+        val main by getting {
+            kotlin.srcDir("src/main/kotlin")
+            dependencies {
+                implementation(kotlin("stdlib-js"))
+                implementation(project(":lib"))
+//                implementation(npm(projectDir.resolve("src/main/my")))
+            }
+        }
+    }
 }
+
+//tasks.register("myCopy", Sync::class.java) {
+//    println("HELLO 0")
+//}
+
+//tasks.withType<org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile>().configureEach {
+//    kotlinOptions {
+//        println(moduleKind)
+//        require(moduleKind == "commonjs")
+//    }
+//}
