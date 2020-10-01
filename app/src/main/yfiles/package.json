@@ -1,0 +1,6 @@
+{
+  "name": "yfiles",
+  "version": "21.0.3",
+  "main": "index.js",
+  "types": "./index.d.ts"
+}

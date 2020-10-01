@@ -13,17 +13,20 @@ repositories {
 }
 
 kotlin {
-    js {
+    target {
         browser {
+//            testTask {
+//                useKarma {
+//                    useChromeHeadless()
+////                    webpackConfig.cssSupport.enabled = true
+//                }
+//            }
         }
     }
 
     sourceSets {
         val main by getting {
-            kotlin.srcDir("src/main/kotlin")
-
             dependencies {
-                implementation(kotlin("stdlib-js"))
                 implementation(project(":base"))
             }
         }
@@ -36,12 +39,30 @@ kotlin {
     }
 }
 
-//dependencies {
+//tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>().named("compileKotlinJs") {
+//    kotlinOptions {
+//        outputFile = rootProject.buildDir.resolve("js-$name/build.js").canonicalPath
+//    }
+//}
+
+val attr = Attribute.of(
+    "my.attr",
+    String::class.java
+)
+
+dependencies {
 //    implementation(kotlin("stdlib-js"))
 //    implementation(project(":base"))
 //
 //    testImplementation(kotlin("test-js"))
-//}
+    constraints {
+//        implementation(org.jetbrains.kotlin.gradle.targets.js.npm.NpmDependencyConstraint(
+//            project = project,
+//            name = "decamelize",
+//            version = "1.0.0"
+//        ))
+    }
+}
 
 publishing {
     publications {

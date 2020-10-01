@@ -1,3 +1,6 @@
+//import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnResolution
+//import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
+
 plugins {
     kotlin("js")
     id("maven-publish")
@@ -8,38 +11,63 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
-//dependencies {
-//    implementation(kotlin("stdlib-js"))
-//    implementation(npm(projectDir.resolve("src/my")))
-//
-//    testImplementation(kotlin("test-js"))
+val attr = Attribute.of(
+    "my.attr",
+    String::class.java
+)
+
+//rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin::class.java) {
+//    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension>().apply {
+//        resolutions.add(
+//            YarnResolution("lodash").apply {
+//                include("^1.0.0")
+//                exclude("~1.2.1", "1.3.0 - 1.4.0")
+//            }
+//        )
+//    }
 //}
 
+dependencies {
+//    implementation(npm(projectDir.resolve("src/my")))
+
+    testImplementation(kotlin("test-js"))
+    implementation(npm("decamelize", "*", true))
+
+//    constraints {
+//        implementation(org.jetbrains.kotlin.gradle.targets.js.npm.NpmDependencyConstraint(project, "lodash", "^1.0.0")) {
+//            version {
+//               reject("~1.2.1", "1.3.0 - 1.4.0")
+//            }
+//        }
+//    }
+}
+
 kotlin {
-    js {
-        useCommonJs()
-//        moduleName = "base2"
-        browser {
+    js(BOTH) {
+//    js {
+        nodejs()
+//        useCommonJs()
+//        browser {
 //            testTask {
 //                useKarma {
 ////                    useIe()
 ////                    useOpera()
 //                }
 //            }
-        }
-        nodejs()
+//        }
 
+//    }
     }
 
     sourceSets {
         val main by getting {
-            kotlin.srcDir("src/main/kotlin")
+//            kotlin.srcDir("src/main/kotlin")
 
             dependencies {
-                implementation(kotlin("stdlib-js"))
-//                implementation(npm(projectDir.resolve("src/my")))
+                implementation(devNpm("date-arithmetic", "*"))
             }
         }
 
@@ -50,6 +78,12 @@ kotlin {
         }
     }
 }
+
+//tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>().named("compileKotlinJs") {
+//    kotlinOptions {
+//        outputFile = rootProject.buildDir.resolve("js-$name/build.js").canonicalPath
+//    }
+//}
 
 publishing {
     publications {

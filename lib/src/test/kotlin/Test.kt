@@ -4,6 +4,6 @@ import kotlin.test.assertTrue
 class MyTestSuite {
     @Test
     fun myTest() {
-        assertTrue { true }
+        assertTrue { false }
     }
 }
