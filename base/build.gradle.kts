@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
+import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin
+
 //import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnResolution
 //import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
@@ -45,8 +48,12 @@ dependencies {
 //    }
 }
 
+rootProject.plugins.withType(NodeJsRootPlugin::class.java) {
+    rootProject.the<NodeJsRootExtension>().versions.dukat.version = "0.5.8-rc.1"
+}
+
 kotlin {
-    js(BOTH) {
+    js {
 //    js {
         nodejs()
 //        useCommonJs()

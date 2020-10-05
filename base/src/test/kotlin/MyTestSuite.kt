@@ -24,10 +24,3 @@ class MyTestSuite {
 
 //@JsModule("foo")
 //external fun foo()
-
-class Test {
-    @Test
-    fun testLongError() {
-        throw Exception("ABCDEF\n".repeat(75000))
-    }
-}
